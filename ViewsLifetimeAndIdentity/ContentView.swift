@@ -37,7 +37,7 @@ struct ContentView: View {
                     NavigationLink("List With Text") {
                         ListWithText()
                     }
-                    NavigationLink("List With If 1") {
+                    NavigationLink("List With If") {
                         ListWithIf()
                     }
                     NavigationLink("List With If Else") {
