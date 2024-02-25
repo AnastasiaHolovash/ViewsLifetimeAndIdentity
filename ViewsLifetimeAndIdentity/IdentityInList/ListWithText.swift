@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListWithText: View {
 
-    let data: [Info] = (0..<100000).map { index in
+    let data: [Info] = (0..<100_000).map { index in
         Info(id: UUID().uuidString, index: index)
     }
 
@@ -36,9 +36,3 @@ struct Info: Identifiable {
     let index: Int
 }
 
-
-struct Item {
-    var id: UUID { UUID() }
-
-    
-}

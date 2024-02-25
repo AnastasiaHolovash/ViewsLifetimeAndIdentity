@@ -1,13 +1,13 @@
 //
-//  ListWithFilter.swift
+//  ListWithIf.swift
 //  ViewsLifetimeAndIdentity
 //
-//  Created by Anastasia Holovash on 21.02.2024.
+//  Created by Anastasia Holovash on 20.02.2024.
 //
 
 import SwiftUI
 
-struct ListWithFilter: View {
+struct ListWithIfElse: View {
 
     let data: [Info] = (0..<100000).map { index in
         Info(id: UUID().uuidString, index: index)
@@ -21,13 +21,18 @@ struct ListWithFilter: View {
 
     var list: some View {
         List {
-            ForEach(data.filter { $0.index.isMultiple(of: 2) } ) { element in
-                Text(element.id)
+            ForEach(data, id: \.id) { element in
+                if element.index.isMultiple(of: 2) {
+                    Text(element.id)
+                } else {
+                    Color.mint
+                }
             }
         }
     }
 }
 
 #Preview {
-    ListWithFilter()
+    ListWithIfElse()
 }
+

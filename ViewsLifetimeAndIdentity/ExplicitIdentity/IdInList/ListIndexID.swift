@@ -1,5 +1,5 @@
 //
-//  List1.swift
+//  ListIndexID.swift
 //  ViewsLifetimeAndIdentity
 //
 //  Created by Anastasia Holovash on 24.02.2024.
@@ -7,16 +7,20 @@
 
 import SwiftUI
 
-private let initialData: [String] = (0..<10000).map { _ in UUID().uuidString }
+struct ListIndexID: View {
 
-struct List1: View {
+    private static let initialData: [String] = (0..<10_000).map { _ in UUID().uuidString }
 
     @State var data: [String] = initialData
+    @State var isFixed = false
 
     var body: some View {
         HStack {
             Spacer()
-
+            Toggle("Fix", isOn: $isFixed)
+                .frame(width: 100)
+            Spacer()
+            
             Button(action: {
                 withAnimation {
                     insertItem()
@@ -29,22 +33,25 @@ struct List1: View {
             })
         }
 
-        badList
-//        goodList
+        if isFixed {
+            goodList
+        } else {
+            badList
+        }
     }
 
     var badList: some View {
         List {
             ForEach(data.indices, id: \.self) { index in
-                Text(data[index])
+                ListIndexIDCell(title: data[index])
             }
         }
     }
 
     var goodList: some View {
         List {
-            ForEach(data, id: \.self) { item in
-                Text(item)
+            ForEach(data, id: \.self) { title in
+                ListIndexIDCell(title: title)
             }
         }
     }
@@ -54,6 +61,20 @@ struct List1: View {
     }
 }
 
+struct ListIndexIDCell: View {
+    let title: String
+    @State var color = Color.random
+
+    var body: some View {
+        ZStack(alignment: .leading) {
+            color
+            Text(title)
+        }
+        .frame(height: 50)
+        .listRowInsets(EdgeInsets())
+    }
+}
+
 #Preview {
-    List1()
+    ListIndexID()
 }

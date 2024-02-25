@@ -12,20 +12,17 @@ struct ContentView: View {
         NavigationStack {
             List {
                 Section("ExplicitIdentity") {
-                    NavigationLink("Explicit Identity ScrollTo") {
+                    NavigationLink("ScrollTo") {
                         ExplicitIdentityScrollTo()
                     }
-                    NavigationLink("List1") {
-                        List1()
+                    NavigationLink("Index ID") {
+                        ListIndexID()
                     }
-                    NavigationLink("List2") {
-                        List2()
+                    NavigationLink("Computed UUID") {
+                        ListComputedUUID()
                     }
-                    NavigationLink("List3") {
-                        List3()
-                    }
-                    NavigationLink("List4") {
-                        List4()
+                    NavigationLink("Computed ID") {
+                        ListComputedID()
                     }
                 }
                 Section("Structural Identity") {
@@ -41,13 +38,10 @@ struct ContentView: View {
                         ListWithText()
                     }
                     NavigationLink("List With If 1") {
-                        ListWithIf_1()
+                        ListWithIf()
                     }
-                    NavigationLink("List With Filter") {
-                        ListWithFilter()
-                    }
-                    NavigationLink("List With If 2") {
-                        ListWithIf_2()
+                    NavigationLink("List With If Else") {
+                        ListWithIfElse()
                     }
                     NavigationLink("List With Nested If") {
                         ListWithNestedIf()

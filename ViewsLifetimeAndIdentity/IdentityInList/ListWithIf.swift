@@ -1,5 +1,5 @@
 //
-//  ListWithIf_2.swift
+//  ListWithIfElse.swift
 //  ViewsLifetimeAndIdentity
 //
 //  Created by Anastasia Holovash on 21.02.2024.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ListWithIf_1: View {
+struct ListWithIf: View {
 
-    let data: [Info] = (0..<100000).map { index in
+    let data: [Info] = (0..<100_000).map { index in
         Info(id: UUID().uuidString, index: index)
     }
 
@@ -31,5 +31,5 @@ struct ListWithIf_1: View {
 }
 
 #Preview {
-    ListWithIf_1()
+    ListWithIf()
 }

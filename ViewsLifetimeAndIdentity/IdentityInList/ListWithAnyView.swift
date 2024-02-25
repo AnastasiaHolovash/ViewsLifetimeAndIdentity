@@ -33,7 +33,7 @@ struct CellAnyView: View {
     let element: Info
 
     var body: some View {
-        AnyView (
+        AnyView(
             Text(element.id)
         )
     }

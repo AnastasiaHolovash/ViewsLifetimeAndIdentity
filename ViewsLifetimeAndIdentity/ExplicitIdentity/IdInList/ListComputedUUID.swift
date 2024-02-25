@@ -1,5 +1,5 @@
 //
-//  List2.swift
+//  ListComputedUUID.swift
 //  ViewsLifetimeAndIdentity
 //
 //  Created by Anastasia Holovash on 24.02.2024.
@@ -7,17 +7,21 @@
 
 import SwiftUI
 
-struct ListItem: Identifiable {
-    let title: String
+extension ListComputedUUID {
 
-    var id: UUID { UUID() }
+    struct ListItem: Identifiable {
+        let title: String
+
+        var id: UUID { UUID() }
+    }
+
 }
 
-private let initialData: [ListItem] = (0..<10000).map { _ in
-    ListItem(title: UUID().uuidString)
-}
+struct ListComputedUUID: View {
 
-struct List2: View {
+    private static let initialData: [ListItem] = (0..<10_000).map { _ in
+        ListItem(title: UUID().uuidString)
+    }
 
     @State var data: [ListItem] = initialData
 
@@ -42,8 +46,8 @@ struct List2: View {
 
     var list: some View {
         List {
-            ForEach(data, id: \.id) { item in
-                Text(item.title)
+            ForEach(data, id: \.id) { _ in
+                ListComputedUUIDCell()
             }
         }
     }
@@ -53,6 +57,16 @@ struct List2: View {
     }
 }
 
+struct ListComputedUUIDCell: View {
+    @State var color = Color.random
+
+    var body: some View {
+        color
+            .frame(height: 50)
+            .listRowInsets(EdgeInsets())
+    }
+}
+
 #Preview {
-    List2()
+    ListComputedUUID()
 }
