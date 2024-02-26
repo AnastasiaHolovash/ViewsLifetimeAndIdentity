@@ -33,7 +33,7 @@ struct ContentView: View {
                         StructuralIdentityState()
                     }
                 }
-                Section("Identity In List") {
+                Section("Check the Memory when open these examples") {
                     NavigationLink("List With Text") {
                         ListWithText()
                     }
